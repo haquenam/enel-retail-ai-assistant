@@ -150,10 +150,10 @@
       <div class="container help-card">
         <div>
           <span class="eyebrow">সহায়তা দরকার?</span>
-          <h2>প্রশ্ন করুন Enel Assist কে</h2>
-          <p>অর্ডার, ডেলিভারি, রিটার্ন বা পণ্য সম্পর্কে জানতে ডান পাশে থাকা Enel Assist বাটনে ক্লিক করুন।</p>
+          <h2>আমরা সাহায্য করতে প্রস্তুত</h2>
+          <p>অর্ডার ট্র্যাক, ডেলিভারি, রিটার্ন বা সাধারণ তথ্যের জন্য আমাদের সহায়তা লিংক ব্যবহার করুন।</p>
         </div>
-        <button class="primary-btn open-assistant" type="button">Enel Assist খুলুন</button>
+        <a class="primary-btn" href="#tracking">অর্ডার ট্র্যাক করুন</a>
       </div>
     </section>
   </main>
@@ -189,50 +189,6 @@
       <span>শিক্ষার জন্য, বাস্তব বিক্রয়ের জন্য নয়</span>
     </div>
   </footer>
-
-  <button class="assistant-launcher" id="assistantLauncher" type="button" aria-expanded="false" aria-controls="assistantPanel">
-    <span class="launcher-icon" aria-hidden="true">✦</span>
-    <span>
-      <strong>Enel Assist</strong>
-      <small>আপনার এআই সহকারী</small>
-    </span>
-  </button>
-
-  <aside class="assistant-panel" id="assistantPanel" aria-hidden="true" aria-label="Enel Assist চ্যাট">
-    <div class="assistant-header">
-      <div class="assistant-title">
-        <span class="assistant-avatar" aria-hidden="true">✦</span>
-        <div><strong>Enel Assist</strong><small>আপনার এআই সহকারী</small></div>
-      </div>
-      <div class="assistant-actions">
-        <button id="minimizeAssistant" type="button" aria-label="মিনিমাইজ">−</button>
-        <button id="closeAssistant" type="button" aria-label="বন্ধ করুন">×</button>
-      </div>
-    </div>
-
-    <div class="chat-body" id="chatBody">
-      <div class="message bot-message">
-        <span class="message-avatar">✦</span>
-        <div class="bubble">
-          <strong>আসসালামু আলাইকুম!</strong>
-          <p>আমি Enel Assist। আপনার অর্ডার, ডেলিভারি, রিটার্ন বা অন্য কোনো প্রশ্নে আমি সাহায্য করতে পারি।</p>
-          <p>কীভাবে সাহায্য করতে পারি?</p>
-        </div>
-      </div>
-      <div class="quick-actions" aria-label="দ্রুত প্রশ্ন">
-        <button type="button" data-question="আমার অর্ডার কোথায়?">আমার অর্ডার কোথায়?</button>
-        <button type="button" data-question="রিটার্ন করতে চাই">রিটার্ন করতে চাই</button>
-        <button type="button" data-question="একটি পণ্যের বিষয়ে জানতে চাই">একটি পণ্যের বিষয়ে জানতে চাই</button>
-        <button type="button" data-question="অন্য কোনো প্রশ্ন">অন্য কোনো প্রশ্ন</button>
-      </div>
-      <div class="demo-note">ডেমো পর্যায়: এই চ্যাট এখনো Lesson 8 প্রসেসিংয়ের সাথে যুক্ত নয়।</div>
-    </div>
-
-    <form class="chat-input" id="chatForm">
-      <input id="chatInput" type="text" autocomplete="off" placeholder="এখানে আপনার প্রশ্ন লিখুন..." aria-label="আপনার প্রশ্ন" />
-      <button type="submit" aria-label="পাঠান">➜</button>
-    </form>
-  </aside>
 
   <script src="script.js"></script>
 </body>

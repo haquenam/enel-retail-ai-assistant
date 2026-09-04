@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Enel Retail demo website for AI Integrator Bangla Lab Lesson 9" />
+  <title>Enel Retail | ভালো পণ্য, সহজ জীবন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>বাংলাদেশ থেকে, সবার জন্য <span aria-hidden="true">♥</span> <strong>Enel Retail</strong> একটি ডেমো শিক্ষা প্রকল্প</div>
+      <div class="top-links">
+        <a href="#tracking">অর্ডার ট্র্যাক</a>
+        <a href="#help">সাহায্য</a>
+        <a href="#contact">যোগাযোগ</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Enel Retail হোম">
+        <span class="brand-mark" aria-hidden="true">▰</span>
+        <span class="brand-copy">
+          <span class="brand-name"><strong>ENEL</strong> <em>Retail</em></span>
+          <span class="brand-tagline">ভালো পণ্য, সহজ জীবন</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="প্রধান নেভিগেশন">
+        <a class="active" href="#home">হোম</a>
+        <a href="#products">আমাদের পণ্য</a>
+        <a href="#offers">বিশেষ অফার</a>
+        <a href="#about">আমাদের সম্পর্কে</a>
+        <a href="#help">সাহায্য</a>
+      </nav>
+
+      <div class="nav-actions">
+        <label class="search-box" aria-label="পণ্য খুঁজুন">
+          <input type="search" placeholder="পণ্য খুঁজুন..." />
+          <span aria-hidden="true">⌕</span>
+        </label>
+        <button class="cart-button" type="button" aria-label="কার্ট">
+          <span aria-hidden="true">🛒</span>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">বিশ্বস্ত কেনাকাটার সহজ ঠিকানা</span>
+          <h1>প্রতিদিনের জীবনে<br />বিশ্বস্ত সঙ্গী</h1>
+          <p>মানসম্মত পণ্য, দ্রুত ডেলিভারি এবং বন্ধুত্বপূর্ণ সাহায্য সব একসাথে Enel Retail এ।</p>
+          <a class="primary-btn" href="#products">এখনই কেনাকাটা করুন <span aria-hidden="true">→</span></a>
+          <div class="hero-benefits" aria-label="সুবিধা">
+            <span>🚚 দ্রুত ডেলিভারি</span>
+            <span>🛡️ নিরাপদ পেমেন্ট</span>
+            <span>🎧 বন্ধুত্বপূর্ণ সাহায্য</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Enel Retail প্যাকেজের ডেমো ভিজ্যুয়াল">
+          <div class="slogan">ছোট ছোট<br />কেনাকাটায়<br /><strong>বড় আনন্দ</strong></div>
+          <div class="package-scene">
+            <div class="package-box">
+              <div class="package-logo">ENEL <span>Retail</span></div>
+              <div class="package-tagline">ভালো পণ্য, সহজ জীবন</div>
+            </div>
+            <div class="package-shadow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section products-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">সহজে খুঁজুন</span>
+            <h2>আমাদের পণ্য বিভাগ</h2>
+          </div>
+          <a href="#all-products">সব দেখুন <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="category-grid" id="all-products">
+          <article class="category-card">
+            <div class="category-icon">🥬</div>
+            <h3>মুদিখানা পণ্য</h3>
+            <p>প্রতিদিনের প্রয়োজনীয় খাবার ও রান্নাঘরের সামগ্রী</p>
+          </article>
+          <article class="category-card">
+            <div class="category-icon">🧴</div>
+            <h3>ঘরোয়া সামগ্রী</h3>
+            <p>পরিষ্কার পরিচ্ছন্নতা ও ঘরের দরকারি পণ্য</p>
+          </article>
+          <article class="category-card">
+            <div class="category-icon">📚</div>
+            <h3>বই ও স্টেশনারি</h3>
+            <p>পড়াশোনা, অফিস ও সৃজনশীল কাজের উপকরণ</p>
+          </article>
+          <article class="category-card">
+            <div class="category-icon">🧼</div>
+            <h3>ব্যক্তিগত যত্ন</h3>
+            <p>নিজের ও পরিবারের দৈনন্দিন যত্নের পণ্য</p>
+          </article>
+          <article id="offers" class="category-card highlight-card">
+            <div class="category-icon">🎁</div>
+            <h3>বিশেষ অফার</h3>
+            <p>নির্বাচিত পণ্যে সাশ্রয়ী মূল্য ও বিশেষ সুবিধা</p>
+          </article>
+        </div>
+
+        <div class="value-strip">
+          <div><span class="value-icon">🌿</span><p><strong>মানসম্মত পণ্য</strong><br />যা আপনি বিশ্বাস করতে পারেন</p></div>
+          <div><span class="value-icon">♥</span><p><strong>গ্রাহক সন্তুষ্টি</strong><br />আমাদের প্রধান অগ্রাধিকার</p></div>
+          <div><span class="value-icon">👥</span><p><strong>বাংলাদেশের জন্য</strong><br />স্থানীয় প্রয়োজনের প্রতি যত্ন</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="container about-card">
+        <div class="about-visual" aria-hidden="true">
+          <div class="person-illustration">👩‍💼</div>
+          <div class="mini-package">ENEL</div>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">আমাদের গল্প</span>
+          <h2>Enel Retail আপনার জন্য, সব সময়</h2>
+          <p>আমরা বিশ্বাস করি, ভালো পণ্য আর ভালো সেবা প্রতিদিনের জীবনকে সহজ এবং সুন্দর করে তোলে। এই ওয়েবসাইটটি AI Integrator Bangla Lab এর একটি শিক্ষামূলক ডেমো।</p>
+          <a class="secondary-btn" href="#contact">আমাদের সম্পর্কে জানুন <span aria-hidden="true">→</span></a>
+        </div>
+        <blockquote>
+          “বিশ্বাস, সেবা এবং আপনার পছন্দ”
+          <cite>Enel Retail</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="help" class="section help-section">
+      <div class="container help-card">
+        <div>
+          <span class="eyebrow">সহায়তা দরকার?</span>
+          <h2>প্রশ্ন করুন Enel Assist কে</h2>
+          <p>অর্ডার, ডেলিভারি, রিটার্ন বা পণ্য সম্পর্কে জানতে ডান পাশে থাকা Enel Assist বাটনে ক্লিক করুন।</p>
+        </div>
+        <button class="primary-btn open-assistant" type="button">Enel Assist খুলুন</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">ENEL <span>Retail</span></div>
+        <p>ভালো পণ্য, সহজ জীবন</p>
+      </div>
+      <div>
+        <h3>দ্রুত লিংক</h3>
+        <a href="#home">হোম</a>
+        <a href="#products">আমাদের পণ্য</a>
+        <a href="#offers">বিশেষ অফার</a>
+        <a href="#help">সাহায্য</a>
+      </div>
+      <div>
+        <h3>সাহায্য</h3>
+        <a id="tracking" href="#help">অর্ডার ট্র্যাক</a>
+        <a href="#help">রিটার্ন নীতি</a>
+        <a href="#help">ডেলিভারি তথ্য</a>
+        <a href="#help">সাধারণ প্রশ্ন</a>
+      </div>
+      <div>
+        <h3>আমাদের সাথে যুক্ত থাকুন</h3>
+        <div class="social-row"><span>◉</span><span>▶</span><span>in</span></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Enel Retail, ডেমো প্রকল্প</span>
+      <span>AI Integrator Bangla Lab</span>
+      <span>শিক্ষার জন্য, বাস্তব বিক্রয়ের জন্য নয়</span>
+    </div>
+  </footer>
+
+  <button class="assistant-launcher" id="assistantLauncher" type="button" aria-expanded="false" aria-controls="assistantPanel">
+    <span class="launcher-icon" aria-hidden="true">✦</span>
+    <span>
+      <strong>Enel Assist</strong>
+      <small>আপনার এআই সহকারী</small>
+    </span>
+  </button>
+
+  <aside class="assistant-panel" id="assistantPanel" aria-hidden="true" aria-label="Enel Assist চ্যাট">
+    <div class="assistant-header">
+      <div class="assistant-title">
+        <span class="assistant-avatar" aria-hidden="true">✦</span>
+        <div><strong>Enel Assist</strong><small>আপনার এআই সহকারী</small></div>
+      </div>
+      <div class="assistant-actions">
+        <button id="minimizeAssistant" type="button" aria-label="মিনিমাইজ">−</button>
+        <button id="closeAssistant" type="button" aria-label="বন্ধ করুন">×</button>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <div class="message bot-message">
+        <span class="message-avatar">✦</span>
+        <div class="bubble">
+          <strong>আসসালামু আলাইকুম!</strong>
+          <p>আমি Enel Assist। আপনার অর্ডার, ডেলিভারি, রিটার্ন বা অন্য কোনো প্রশ্নে আমি সাহায্য করতে পারি।</p>
+          <p>কীভাবে সাহায্য করতে পারি?</p>
+        </div>
+      </div>
+      <div class="quick-actions" aria-label="দ্রুত প্রশ্ন">
+        <button type="button" data-question="আমার অর্ডার কোথায়?">আমার অর্ডার কোথায়?</button>
+        <button type="button" data-question="রিটার্ন করতে চাই">রিটার্ন করতে চাই</button>
+        <button type="button" data-question="একটি পণ্যের বিষয়ে জানতে চাই">একটি পণ্যের বিষয়ে জানতে চাই</button>
+        <button type="button" data-question="অন্য কোনো প্রশ্ন">অন্য কোনো প্রশ্ন</button>
+      </div>
+      <div class="demo-note">ডেমো পর্যায়: এই চ্যাট এখনো Lesson 8 প্রসেসিংয়ের সাথে যুক্ত নয়।</div>
+    </div>
+
+    <form class="chat-input" id="chatForm">
+      <input id="chatInput" type="text" autocomplete="off" placeholder="এখানে আপনার প্রশ্ন লিখুন..." aria-label="আপনার প্রশ্ন" />
+      <button type="submit" aria-label="পাঠান">➜</button>
+    </form>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -13,8 +13,13 @@ const chatBody = document.getElementById('chatBody');
 
 
 function openAssistant() {
+
     panel.classList.add('open');
-    panel.setAttribute('aria-hidden', 'false');
+
+    panel.setAttribute(
+        'aria-hidden',
+        'false'
+    );
 
     launcher.style.display = 'none';
 
@@ -23,8 +28,13 @@ function openAssistant() {
 
 
 function closeAssistant() {
+
     panel.classList.remove('open');
-    panel.setAttribute('aria-hidden', 'true');
+
+    panel.setAttribute(
+        'aria-hidden',
+        'true'
+    );
 
     launcher.style.display = 'flex';
 }
@@ -32,9 +42,11 @@ function closeAssistant() {
 
 function addUserMessage(text) {
 
-    const message = document.createElement('div');
+    const message =
+        document.createElement('div');
 
-    message.className = 'message user-message';
+    message.className =
+        'message user-message';
 
     message.innerHTML = `
         <div class="bubble">
@@ -44,15 +56,18 @@ function addUserMessage(text) {
 
     chatBody.appendChild(message);
 
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.scrollTop =
+        chatBody.scrollHeight;
 }
 
 
 function addBotMessage(text) {
 
-    const message = document.createElement('div');
+    const message =
+        document.createElement('div');
 
-    message.className = 'message bot-message';
+    message.className =
+        'message bot-message';
 
     message.innerHTML = `
         <span class="message-avatar">✦</span>
@@ -64,13 +79,104 @@ function addBotMessage(text) {
 
     chatBody.appendChild(message);
 
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.scrollTop =
+        chatBody.scrollHeight;
+}
+
+
+function showTypingIndicator() {
+
+    const message =
+        document.createElement('div');
+
+    message.className =
+        'message bot-message';
+
+    message.innerHTML = `
+        <span class="message-avatar">✦</span>
+
+        <div class="bubble"
+             id="typingIndicator">
+            •
+        </div>
+    `;
+
+    chatBody.appendChild(message);
+
+    chatBody.scrollTop =
+        chatBody.scrollHeight;
+
+
+    const bubble =
+        message.querySelector(
+            '#typingIndicator'
+        );
+
+
+    let step = 1;
+
+
+    const timer =
+        window.setInterval(
+            function() {
+
+                step++;
+
+                if (step > 3) {
+                    step = 1;
+                }
+
+
+                if (step === 1) {
+                    bubble.textContent = '•';
+                }
+
+                if (step === 2) {
+                    bubble.textContent = '•  •';
+                }
+
+                if (step === 3) {
+                    bubble.textContent =
+                        '•  •  •';
+                }
+
+            },
+            450
+        );
+
+
+    message.dataset.typing = 'true';
+
+    message.typingTimer = timer;
+
+
+    return message;
+}
+
+
+function removeTypingIndicator(message) {
+
+    if (!message) {
+        return;
+    }
+
+
+    if (message.typingTimer) {
+
+        window.clearInterval(
+            message.typingTimer
+        );
+    }
+
+
+    message.remove();
 }
 
 
 function escapeHtml(text) {
 
-    const div = document.createElement('div');
+    const div =
+        document.createElement('div');
 
     div.textContent = text;
 
@@ -78,34 +184,50 @@ function escapeHtml(text) {
 }
 
 
-async function sendToBackend(customerMessage) {
+async function sendToBackend(
+    customerMessage
+) {
 
-    const response = await fetch(BACKEND_URL, {
+    const response =
+        await fetch(
+            BACKEND_URL,
+            {
 
-        method: 'POST',
+                method: 'POST',
 
-        redirect: 'follow',
+                redirect: 'follow',
 
-        headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-        },
+                headers: {
+                    'Content-Type':
+                        'text/plain;charset=utf-8'
+                },
 
-        body: JSON.stringify({
-            message: customerMessage
-        })
-    });
+                body: JSON.stringify({
+                    message:
+                        customerMessage
+                })
+            }
+        );
 
 
     if (!response.ok) {
-        throw new Error('Backend request failed');
+
+        throw new Error(
+            'Backend request failed'
+        );
     }
 
 
-    const data = await response.json();
+    const data =
+        await response.json();
 
 
     if (!data.ok) {
-        throw new Error(data.error || 'Backend error');
+
+        throw new Error(
+            data.error ||
+            'Backend error'
+        );
     }
 
 
@@ -113,49 +235,92 @@ async function sendToBackend(customerMessage) {
 }
 
 
-launcher.addEventListener('click', openAssistant);
-
-closeButton.addEventListener('click', closeAssistant);
-
-minimizeButton.addEventListener('click', closeAssistant);
-
-
-chatForm.addEventListener('submit', async function(event) {
-
-    event.preventDefault();
-
-    const customerMessage = chatInput.value.trim();
-
-    if (!customerMessage) {
-        return;
-    }
+launcher.addEventListener(
+    'click',
+    openAssistant
+);
 
 
-    addUserMessage(customerMessage);
+closeButton.addEventListener(
+    'click',
+    closeAssistant
+);
 
-    chatInput.value = '';
 
-    chatInput.disabled = true;
+minimizeButton.addEventListener(
+    'click',
+    closeAssistant
+);
 
 
-    try {
+chatForm.addEventListener(
+    'submit',
+    async function(event) {
 
-        const reply = await sendToBackend(customerMessage);
+        event.preventDefault();
 
-        addBotMessage(reply);
 
-    } catch (error) {
+        const customerMessage =
+            chatInput.value.trim();
 
-        console.error(error);
 
-        addBotMessage(
-            'দুঃখিত, এই মুহূর্তে আপনার বার্তাটি প্রসেস করা যাচ্ছে না।'
+        if (!customerMessage) {
+            return;
+        }
+
+
+        addUserMessage(
+            customerMessage
         );
 
-    } finally {
 
-        chatInput.disabled = false;
+        chatInput.value = '';
 
-        chatInput.focus();
+        chatInput.disabled = true;
+
+
+        const typingMessage =
+            showTypingIndicator();
+
+
+        try {
+
+            const reply =
+                await sendToBackend(
+                    customerMessage
+                );
+
+
+            removeTypingIndicator(
+                typingMessage
+            );
+
+
+            addBotMessage(
+                reply
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            removeTypingIndicator(
+                typingMessage
+            );
+
+
+            addBotMessage(
+                'দুঃখিত, এই মুহূর্তে আপনার বার্তাটি প্রসেস করা যাচ্ছে না।'
+            );
+
+
+        } finally {
+
+            chatInput.disabled = false;
+
+            chatInput.focus();
+        }
     }
-});
+);

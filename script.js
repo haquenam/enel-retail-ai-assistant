@@ -12,6 +12,17 @@ const chatInput = document.getElementById('chatInput');
 const chatBody = document.getElementById('chatBody');
 
 
+// -------------------------------------------------------------
+// Conversation memory
+// -------------------------------------------------------------
+
+const conversationHistory = [];
+
+
+// -------------------------------------------------------------
+// Open / close assistant
+// -------------------------------------------------------------
+
 function openAssistant() {
 
     panel.classList.add('open');
@@ -40,6 +51,10 @@ function closeAssistant() {
 }
 
 
+// -------------------------------------------------------------
+// Customer message
+// -------------------------------------------------------------
+
 function addUserMessage(text) {
 
     const message =
@@ -60,6 +75,10 @@ function addUserMessage(text) {
         chatBody.scrollHeight;
 }
 
+
+// -------------------------------------------------------------
+// Assistant message
+// -------------------------------------------------------------
 
 function addBotMessage(text) {
 
@@ -83,6 +102,10 @@ function addBotMessage(text) {
         chatBody.scrollHeight;
 }
 
+
+// -------------------------------------------------------------
+// Typing indicator
+// -------------------------------------------------------------
 
 function showTypingIndicator() {
 
@@ -145,8 +168,6 @@ function showTypingIndicator() {
         );
 
 
-    message.dataset.typing = 'true';
-
     message.typingTimer = timer;
 
 
@@ -173,6 +194,10 @@ function removeTypingIndicator(message) {
 }
 
 
+// -------------------------------------------------------------
+// Safe text
+// -------------------------------------------------------------
+
 function escapeHtml(text) {
 
     const div =
@@ -184,9 +209,21 @@ function escapeHtml(text) {
 }
 
 
-async function sendToBackend(
-    customerMessage
-) {
+// -------------------------------------------------------------
+// Keep conversation memory reasonably small
+// -------------------------------------------------------------
+
+function getConversationHistory() {
+
+    return conversationHistory.slice(-20);
+}
+
+
+// -------------------------------------------------------------
+// Send message + conversation history to Apps Script
+// -------------------------------------------------------------
+
+async function sendToBackend(customerMessage) {
 
     const response =
         await fetch(
@@ -203,8 +240,13 @@ async function sendToBackend(
                 },
 
                 body: JSON.stringify({
+
                     message:
-                        customerMessage
+                        customerMessage,
+
+                    history:
+                        getConversationHistory()
+
                 })
             }
         );
@@ -235,6 +277,10 @@ async function sendToBackend(
 }
 
 
+// -------------------------------------------------------------
+// Events
+// -------------------------------------------------------------
+
 launcher.addEventListener(
     'click',
     openAssistant
@@ -253,6 +299,10 @@ minimizeButton.addEventListener(
 );
 
 
+// -------------------------------------------------------------
+// Customer sends a message
+// -------------------------------------------------------------
+
 chatForm.addEventListener(
     'submit',
     async function(event) {
@@ -269,9 +319,17 @@ chatForm.addEventListener(
         }
 
 
+        // Show customer message
         addUserMessage(
             customerMessage
         );
+
+
+        // Save customer message in memory
+        conversationHistory.push({
+            role: 'customer',
+            text: customerMessage
+        });
 
 
         chatInput.value = '';
@@ -296,9 +354,17 @@ chatForm.addEventListener(
             );
 
 
+            // Show assistant response
             addBotMessage(
                 reply
             );
+
+
+            // Save assistant response in memory
+            conversationHistory.push({
+                role: 'assistant',
+                text: reply
+            });
 
 
         } catch (error) {
@@ -311,8 +377,12 @@ chatForm.addEventListener(
             );
 
 
+            const errorMessage =
+                'দুঃখিত, এই মুহূর্তে আপনার বার্তাটি প্রসেস করা যাচ্ছে না।';
+
+
             addBotMessage(
-                'দুঃখিত, এই মুহূর্তে আপনার বার্তাটি প্রসেস করা যাচ্ছে না।'
+                errorMessage
             );
 
 

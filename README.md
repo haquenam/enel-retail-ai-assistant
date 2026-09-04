@@ -4,20 +4,31 @@ AI Integrator Bangla Lab এর Lesson 9 এর জন্য তৈরি এক
 
 ## বর্তমান অবস্থা
 
-এই প্রথম সংস্করণে Enel Retail এর বাংলা ডেমো ওয়েবসাইট এবং Enel Assist এর ইউজার ইন্টারফেস তৈরি করা হয়েছে। চ্যাট উইন্ডো এখন ডেমো মোডে কাজ করছে, কিন্তু এখনো Lesson 8 এর Google Apps Script, Gemini, Google Sheet এবং ইমেইল প্রসেসিংয়ের সাথে যুক্ত হয়নি।
+`main` branch এখন Lesson 9 রেকর্ডিংয়ের শুরুর অবস্থায় রাখা হয়েছে। Enel Retail ওয়েবসাইট প্রস্তুত আছে, কিন্তু Enel Assist chatbot ইচ্ছাকৃতভাবে সরিয়ে রাখা হয়েছে। ভিডিওতে chatbot launcher, chat window, conversation logic এবং Google Sheet integration ধাপে ধাপে তৈরি করা হবে।
 
-## ফাইল
+## নিরাপদ ব্যাকআপ
 
-- `index.html` — Enel Retail ওয়েবসাইট এবং Enel Assist চ্যাট প্যানেল
-- `style.css` — সম্পূর্ণ রেসপন্সিভ ডিজাইন
-- `script.js` — Enel Assist বাটন, চ্যাট উইন্ডো খোলা বন্ধ করা এবং ডেমো ইন্টারঅ্যাকশন
+সম্পূর্ণ পরীক্ষামূলক chatbot prototype আলাদা branch এ সংরক্ষিত আছে:
 
-## Lesson 9 এর পরবর্তী ধাপ
+`lesson-09-complete-backup`
 
-1. ওয়েবসাইটটি GitHub Pages এ প্রকাশ করা
-2. Enel Assist এর কথোপকথন প্রবাহ চূড়ান্ত করা
-3. Lesson 8 এর বিদ্যমান Google Apps Script প্রসেসিংয়ের সাথে সংযোগ করা
-4. পূর্ণ এন্ড টু এন্ড পরীক্ষা করা
+এই branch আমাদের reference solution হিসেবে থাকবে, যাতে রেকর্ডিংয়ের সময় কোনো সমস্যা হলে working prototype হারিয়ে না যায়।
+
+## `main` branch এর ফাইল
+
+- `index.html` — Enel Retail এর pre-built demo website
+- `style.css` — website এর responsive design
+- `script.js` — Lesson 9 recording baseline; chatbot logic এখনো যোগ করা হয়নি
+
+## Lesson 9 এ যা তৈরি করা হবে
+
+1. Enel Assist launcher button
+2. Chat window এবং message area
+3. Customer message input এবং send behaviour
+4. Conversational information capture
+5. Google Sheet এ স্বয়ংক্রিয়ভাবে customer request লেখা
+6. Lesson 8 এর Google Apps Script, Gemini, business rules এবং email/escalation processing এর সাথে connection
+7. End-to-end customer test
 
 ## ডেমো নিরাপত্তা
 

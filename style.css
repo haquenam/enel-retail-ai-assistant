@@ -1086,3 +1086,59 @@ blockquote cite {
     display: none;
   }
 }
+.assistant-launcher {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 60;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 178px;
+    padding: 10px 16px 10px 10px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #0754a7, #1677e8);
+    color: white;
+
+    box-shadow: 0 18px 38px rgba(0, 78, 170, 0.28);
+
+    cursor: pointer;
+    text-align: left;
+}
+
+.launcher-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: white;
+    color: #0754a7;
+
+    font-weight: 800;
+}
+
+.assistant-launcher strong,
+.assistant-launcher small {
+    display: block;
+}
+
+.assistant-launcher strong {
+    font-size: 15px;
+}
+
+.assistant-launcher small {
+    margin-top: 1px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.78);
+}

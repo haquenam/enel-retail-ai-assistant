@@ -197,7 +197,53 @@
         <small>আপনার এআই সহকারী</small>
     </span>
 </button>
+<aside class="assistant-panel" id="assistantPanel" aria-hidden="true">
 
+    <div class="assistant-header">
+        <div class="assistant-title">
+            <span class="assistant-avatar">✦</span>
+
+            <div>
+                <strong>Enel Assist</strong>
+                <small>আপনার এআই সহকারী</small>
+            </div>
+        </div>
+
+        <div class="assistant-actions">
+            <button id="minimizeAssistant" type="button">−</button>
+            <button id="closeAssistant" type="button">×</button>
+        </div>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+
+        <div class="message bot-message">
+            <span class="message-avatar">✦</span>
+
+            <div class="bubble">
+                <strong>আসসালামু আলাইকুম!</strong>
+                <p>
+                    আমি Enel Assist। আপনার অর্ডার, ডেলিভারি,
+                    রিটার্ন বা পণ্য সম্পর্কে জানতে সাহায্য করতে পারি।
+                </p>
+                <p>কীভাবে সাহায্য করতে পারি?</p>
+            </div>
+        </div>
+
+    </div>
+
+    <form class="chat-input" id="chatForm">
+        <input
+            id="chatInput"
+            type="text"
+            placeholder="এখানে আপনার প্রশ্ন লিখুন..."
+            autocomplete="off"
+        />
+
+        <button type="submit">➜</button>
+    </form>
+
+</aside>
 <script src="script.js"></script>
 </body>
 </html>

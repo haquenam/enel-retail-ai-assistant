@@ -1,3 +1,7 @@
+const BACKEND_URL =
+    'https://script.google.com/macros/s/AKfycbxguhTn7cnkDsZHF0J9v0JvyEvFZ4IPMeVdkG25--hd9vxkEFMBgWTFK0KWaw1XZXWj/exec';
+
+
 const launcher = document.getElementById('assistantLauncher');
 const panel = document.getElementById('assistantPanel');
 const closeButton = document.getElementById('closeAssistant');
@@ -44,6 +48,26 @@ function addUserMessage(text) {
 }
 
 
+function addBotMessage(text) {
+
+    const message = document.createElement('div');
+
+    message.className = 'message bot-message';
+
+    message.innerHTML = `
+        <span class="message-avatar">✦</span>
+
+        <div class="bubble">
+            ${escapeHtml(text)}
+        </div>
+    `;
+
+    chatBody.appendChild(message);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+
 function escapeHtml(text) {
 
     const div = document.createElement('div');
@@ -54,6 +78,41 @@ function escapeHtml(text) {
 }
 
 
+async function sendToBackend(customerMessage) {
+
+    const response = await fetch(BACKEND_URL, {
+
+        method: 'POST',
+
+        redirect: 'follow',
+
+        headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+        },
+
+        body: JSON.stringify({
+            message: customerMessage
+        })
+    });
+
+
+    if (!response.ok) {
+        throw new Error('Backend request failed');
+    }
+
+
+    const data = await response.json();
+
+
+    if (!data.ok) {
+        throw new Error(data.error || 'Backend error');
+    }
+
+
+    return data.reply;
+}
+
+
 launcher.addEventListener('click', openAssistant);
 
 closeButton.addEventListener('click', closeAssistant);
@@ -61,19 +120,42 @@ closeButton.addEventListener('click', closeAssistant);
 minimizeButton.addEventListener('click', closeAssistant);
 
 
-chatForm.addEventListener('submit', function(event) {
+chatForm.addEventListener('submit', async function(event) {
 
     event.preventDefault();
 
-    const message = chatInput.value.trim();
+    const customerMessage = chatInput.value.trim();
 
-    if (!message) {
+    if (!customerMessage) {
         return;
     }
 
-    addUserMessage(message);
+
+    addUserMessage(customerMessage);
 
     chatInput.value = '';
 
-    chatInput.focus();
+    chatInput.disabled = true;
+
+
+    try {
+
+        const reply = await sendToBackend(customerMessage);
+
+        addBotMessage(reply);
+
+    } catch (error) {
+
+        console.error(error);
+
+        addBotMessage(
+            'দুঃখিত, এই মুহূর্তে আপনার বার্তাটি প্রসেস করা যাচ্ছে না।'
+        );
+
+    } finally {
+
+        chatInput.disabled = false;
+
+        chatInput.focus();
+    }
 });
